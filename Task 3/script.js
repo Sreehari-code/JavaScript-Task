@@ -1,19 +1,27 @@
-var a;
 
+check();
+function check()
 
-if(confirm("Do you want to login in to this page?") )
 {
-    a = prompt("Please enter your age",19);
-    if(a<18 && a>0)
-    {
-         console.log("You are "+ a +" years old");
-         console.log("You are Minor");
-    }
-   else{
-    console.log("You are "+ a +" years old");
-    console.log("You are Major");
-   }
+    Name =prompt("Your name");
+age = prompt("Your age");
+if(age>=18)
+{
+    alert("Hello "+Name+", You are eligible to vote.");
 }
-else {
-    alert("You are loggged out!");
+else{
+    alert("Sorry "+Name+",  You are not eligible to vote.");
+}
+call()
+}
+
+function call()
+{
+if(confirm("Do you want to check again?"))
+{
+    check();
+}
+else{
+    alert("Good Bye!");
+}
 }
