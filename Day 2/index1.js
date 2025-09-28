@@ -6,23 +6,26 @@ if(a=="library" && b=="book123")
  
     if(d)
     {
-       switch(prompt("Book category"))
+       switch(prompt("Book category\n1.Fiction\n2.Science\n3.History"))
         {
             case "1":
                 
                     alert("You selected Fiction");
+                    alert("Thankyou..");
                     break;
                 
 
                 case "2":
                     
-                        alert("You selected Science")
+                        alert("You selected Science");
+                        alert("Thankyou..");
                         break;
                     
 
                     case "3":
                         
                             alert("You selected History");
+                            alert("Thankyou..");
                             break;
                         
 
