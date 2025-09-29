@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: black;
+      color: rgb(241, 30, 40);
+    }
+
+    button {
+      border-radius: 20px;
+      background-color: rgb(241, 30, 40);
+      color: black;
+      width: 100px;
+      height: 50px;
+    }
+
+    button:hover {
+      cursor: pointer;
+    }
+
+    #section1 {
+      background: white;
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 30px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+
+      width: 400px;
+      position: relative;
+      left: 400px;
+      text-align: center;
+    }
+
+    #section2 {
+      background: white;
+      padding: 15px;
+      border-radius: 8px;
+     margin-top: 30px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      display: none;
+      width: 400px;
+      position: relative;
+      left: 400px;
+      text-align: center;
+    }
+
+    #section3 {
+      background: white;
+      padding: 15px;
+      border-radius: 8px;
+     margin-top: 30px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      display: none;
+      width: 400px;
+      position: relative;
+      left: 400px;
+      text-align: center;
+    }
+
+    #section4 {
+      background: white;
+      padding: 15px;
+      border-radius: 8px;
+     margin-top: 30px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      display: none;
+      width: 400px;
+      position: relative;
+      left: 400px;
+      text-align: center;
+    }
+
+    #section4 button {
+      width: 80px;
+    }
+
+    #section5 {
+      background: white;
+      padding: 15px;
+      border-radius: 8px;
+     margin-top: 30px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      display: none;
+      width: 400px;
+      position: relative;
+      left: 400px;
+      text-align: center;
+    }
+
+
+
+    h1 {
+      margin-top: 50px;
+      color: white;
+    }
+
+    #section6 {
+      background: white;
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 30px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      display: none;
+      width: 400px;
+      position: relative;
+      left: 400px;
+      text-align: center;
+    }
+
+    input,
+    button {
+      margin: 5px 0;
+      padding: 8px;
+    }
+
+    .output {
+      margin-top: 10px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    #jsonOutput {
+      background: #eee;
+      padding: 10px;
+      border-radius: 5px;
+      overflow-wrap: break-word;
+      color: black;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-around;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Student Personal Dashboard</h1>
+  <nav>
+    <h3><button onclick="visible1()">Profile</button></h3>
+    <h3><button onclick="visible2()">Age Calculator</button></h3>
+    <h3><button onclick="visible3()">Greeting</button></h3>
+    <h3><button onclick="visible4()">Calculator</button></h3>
+    <h3><button onclick="visible5()">Motivational Quote</button></h3>
+    <h3><button onclick="visible6()">Student Info (JSON)</button></h3>
+  </nav>
+  <div id="section1">
+    <h2>Profile</h2>
+    <input type="text" id="name" placeholder="Enter your name"><br>
+    <input type="number" id="birthYear" placeholder="Enter birth year"><br>
+    <input type="text" id="city" placeholder="Enter your city"><br>
+    <button onclick="saveProfile()">Save Profile</button>
+    <div class="output" id="profileOutput"></div>
+  </div>
+
+
+  <!-- Age Checker -->
+  <div id="section2">
+    <h2>Age Checker</h2>
+    <button onclick="checkAge()">Check Age & Eligibility</button>
+    <div class="output" id="ageOutput"></div>
+  </div>
+
+  <!-- Greeting -->
+  <div id="section3">
+    <h2>Greeting</h2>
+    <button onclick="showGreeting()">Show Greeting</button>
+    <div class="output" id="greetingOutput"></div>
+  </div>
+
+  <!-- Calculator -->
+  <div id="section4">
+    <h2>Calculator</h2>
+    <input type="number" id="num1" placeholder="First number">
+    <input type="number" id="num2" placeholder="Second number"><br>
+    <button onclick="calculate('add')">Add</button>
+    <button onclick="calculate('sub')">Subtract</button>
+    <button onclick="calculate('mul')">Multiply</button>
+    <button onclick="calculate('div')">Divide</button>
+    <div class="output" id="calcOutput"></div>
+  </div>
+
+  <!-- Quotes -->
+  <div id="section5">
+    <h2>Motivational Quote</h2>
+    <button onclick="showQuote()">Get Quote</button>
+    <div class="output" id="quoteOutput"></div>
+  </div>
+
+  <!-- JSON Info -->
+  <div id="section6">
+    <h2>Student Info (JSON)</h2>
+    <button onclick="showJSON()">View JSON</button>
+    <div id="jsonOutput"></div>
+  </div>
+
+
+  <script>
+    function visible1() {
+      document.getElementById("section1").style.display = "block";
+      document.getElementById("section2").style.display = "none";
+      document.getElementById("section3").style.display = "none";
+      document.getElementById("section4").style.display = "none";
+      document.getElementById("section5").style.display = "none";
+      document.getElementById("section6").style.display = "none";
+    }
+
+    function visible2() {
+      document.getElementById("section1").style.display = "none";
+      document.getElementById("section2").style.display = "block";
+      document.getElementById("section3").style.display = "none";
+      document.getElementById("section4").style.display = "none";
+      document.getElementById("section5").style.display = "none";
+      document.getElementById("section6").style.display = "none";
+    }
+
+    function visible3() {
+      document.getElementById("section1").style.display = "none";
+      document.getElementById("section2").style.display = "none";
+      document.getElementById("section3").style.display = "block";
+      document.getElementById("section4").style.display = "none";
+      document.getElementById("section5").style.display = "none";
+      document.getElementById("section6").style.display = "none";
+    }
+
+    function visible4() {
+      document.getElementById("section1").style.display = "none";
+      document.getElementById("section2").style.display = "none";
+      document.getElementById("section3").style.display = "none";
+      document.getElementById("section4").style.display = "block";
+      document.getElementById("section5").style.display = "none";
+      document.getElementById("section6").style.display = "none";
+    }
+
+    function visible5() {
+      document.getElementById("section1").style.display = "none";
+      document.getElementById("section2").style.display = "none";
+      document.getElementById("section3").style.display = "none";
+      document.getElementById("section4").style.display = "none";
+      document.getElementById("section5").style.display = "block";
+      document.getElementById("section6").style.display = "none";
+    }
+
+    function visible6() {
+      document.getElementById("section1").style.display = "none";
+      document.getElementById("section2").style.display = "none";
+      document.getElementById("section3").style.display = "none";
+      document.getElementById("section4").style.display = "none";
+      document.getElementById("section5").style.display = "none";
+      document.getElementById("section6").style.display = "block";
+    }
+
+
+    let student = { name: "", birthYear: null, city: "" };
+    function saveProfile() {
+      try {
+        let name = document.getElementById("name").value.trim();
+        let birthYear = parseInt(document.getElementById("birthYear").value);
+        let city = document.getElementById("city").value.trim();
+
+        if (!name || isNaN(birthYear) || !city) throw "All fields are required.";
+
+        student = { name, birthYear, city };
+        document.getElementById("profileOutput").innerText =
+          "Profile saved " + name;
+      } catch (err) {
+        document.getElementById("profileOutput").innerText = "Error: " + err;
+      }
+    }
+
+    function checkAge() {
+      try {
+        let eligible;
+        let currentYear = new Date().getFullYear();
+        let age = currentYear - birthYear.value;
+        if (!birthYear.value) { throw "Please fill out your Profile."; }
+        age >= 18 ? eligible = "You are Eligible" : eligible = "You are not Eligible";
+        document.getElementById("ageOutput").innerText = "Age :" + age + "  " + eligible;
+      } catch (err) {
+        document.getElementById("ageOutput").innerText = document.getElementById("ageOutput").innerText = "Error :" + err;
+      }
+    }
+
+
+    function showGreeting() {
+
+      let hour = new Date().getHours();
+      let greeting = hour < 12 ? "Good Morning" : hour < 18 ? "Good Afternoon" : "Good Evening";
+      student.name ? document.getElementById("greetingOutput").innerText = greeting + " " + student.name : document.getElementById("greetingOutput").innerText = greeting;
+
+    }
+
+    function calculate(action) {
+      let num1 = Number(document.getElementById("num1").value);
+      let num2 = Number(document.getElementById("num2").value);
+
+      if (action == "add") {
+        let result = num1 + num2;
+        console.log(result)
+        document.getElementById("calcOutput").innerText = "Addition Result : " + result;
+      }
+
+      if (action == "sub") {
+        let result = num1 - num2;
+        console.log(result)
+        document.getElementById("calcOutput").innerText = "Subtraction Result :" + result;
+      }
+
+      if (action == "mul") {
+        let result = num1 * num2;
+        console.log(result)
+        document.getElementById("calcOutput").innerText = "Multiplication Result :" + result;
+      }
+
+      if (action == "div") {
+        let result = num1 / num2;
+        console.log(result)
+        document.getElementById("calcOutput").innerText = "Division Result :" + result;
+      }
+    }
+
+
+    let quotes = ["Success is not final, failure is not fatal: It is the courage to continue that counts.",
+      "The future belongs to those who believe in the beauty of their dreams.",
+      "Don’t let yesterday take up too much of today.",
+      "Hard work beats talent when talent doesn’t work hard.",
+      "Believe you can and you're halfway there."];
+
+    function showQuote() {
+      let n = Math.floor(Math.random() * quotes.length);
+      document.getElementById("quoteOutput").innerText = quotes[n];
+    }
+
+    function showJSON() {
+      let jason = JSON.stringify(student);
+      student.name ? document.getElementById("jsonOutput").innerText = jason : document.getElementById("jsonOutput").innerText = "Please fill out your Profile!"
+
+    }
+
+
+  </script>
+</body>
+
+</html>
