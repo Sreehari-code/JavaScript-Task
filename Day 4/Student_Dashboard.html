@@ -261,10 +261,9 @@
     let student = { name: "", birthYear: null, city: "" };
     function saveProfile() {
       try {
-        let name = document.getElementById("name").value.trim();
+        let name = document.getElementById("name").value;
         let birthYear = parseInt(document.getElementById("birthYear").value);
-        let city = document.getElementById("city").value.trim();
-
+        let city = document.getElementById("city").value;
         if (!name || isNaN(birthYear) || !city) throw "All fields are required.";
 
         student = { name, birthYear, city };
@@ -343,9 +342,6 @@
       student.name ? document.getElementById("jsonOutput").innerText = jason : document.getElementById("jsonOutput").innerText = "Please fill out your Profile!"
 
     }
-
-
   </script>
 </body>
-
 </html>
